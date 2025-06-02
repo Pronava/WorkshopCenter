@@ -1,0 +1,21 @@
+QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+
+db.setHostName("127.0.0.1");
+
+db.setPort(3307);
+
+db.setDatabaseName("localhost_3307");
+
+db.setUserName("root");
+
+db.setPassword("root");
+
+bool ok = db.open();
+
+if (ok){
+    qDebug() << "数据库打开成功！";
+}
+else {
+    qDebug() << "数据库打开失败";
+    qDebug() << "error open database because" << db.lastError().text();
+}

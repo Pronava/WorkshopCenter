@@ -1,0 +1,240 @@
+<html>
+<head>
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+<!--curtain-->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+  <div class="input-group">
+  <input required="" type="text" name="username" id="username" autocomplete="off" class="input">
+  <label class="user-label">Username</label>
+  </div>
+  <!--input-group end-->
+  <br>
+  <div class="input-group">
+  <input required="" type="password" name="password" id="password" autocomplete="off" class="input">
+  <label class="user-label">Password</label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <label class="container">
+  <input type="radio" id="r1" name="identity" value="user">
+  <div class="checkmark"></div>&nbsp;User
+  </label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <label class="container">
+  <input type="radio" id="r2" name="identity" value="admin">
+  <div class="checkmark"></div>&nbsp;Admin
+  </label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <button type="submit" class="submit" onclick="login()">
+  <span>Submit</span>
+  </button>
+  </div><!--input-group end-->
+  
+  <div id="feedback" style="color:white;"></div>
+  
+  <div id="toAdmin"><a href="administration.html" style="font-size:10px;">To Admin page</a></div>
+  
+  <div class="input-group">
+    <a href="register.html" class="register">Register</a>
+  </div>
+  
+  </div><!--overlay-content end-->
+</div>
+
+<div id="myNav1" class="overlay">
+  
+</div>
+
+<!--javascript for curtain-->
+<script>
+function openNav() {
+	if(index==0)
+		document.getElementById("myNav").style.height = "100%";
+	else if(index==1)
+		document.getElementById("myNav1").style.height = "100%";
+}
+
+function closeNav() {
+	document.getElementById("myNav").style.height = "0%";
+	document.getElementById("myNav1").style.height = "0%";
+}
+</script>
+<!--javascript for curtain end-->
+<!--curtain end-->
+<!--navigation bar-->
+<div class="topnav"> 
+  <img src="csgo-trade-logo.png" alt="logo" width="128px" height="72px">
+  <a href="homepage.html">Home</a>
+  <a href="purchase.html">Purchase</a>
+  <a class="active" href="news.html">News</a>
+  <a href="inventory.html" id="Inventory">Inventory</a>
+  <a><span onclick="openNav()">Account</span></a>
+</div>
+<!--navigation bar end-->
+<!--news-->
+<div class="grid-container" id="grid-container">
+    
+</div>
+
+<button onclick='more()'>more</button><button onclick='recovery()'>recovery</button>
+
+<!--news over-->
+</body>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+window.onload=function(){
+	show_info();
+	check_account();
+}
+
+var rows=12;
+
+function show_info(){
+
+	$.ajax({
+		method: "POST",
+		url: "show_info.php",
+		data:{"rows":rows},
+		async:true,
+		success: function(data) {
+			document.getElementById("grid-container").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+function more(){
+	rows+=8;
+	show_info();
+}
+function recovery(){
+	rows=12;
+	show_info();
+}
+
+function check_account(){
+
+	$.ajax({
+		method: "POST",
+		url: "check_account.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==0){
+				index=0;
+				document.getElementById("toAdmin").style.display="none";
+				document.getElementById("Inventory").style.display="none";
+			}
+			else if(data==1){
+				index=1;
+				user_info();
+				document.getElementById("toAdmin").style.display="none";
+				document.getElementById("Inventory").style.display="block";
+			}
+			else if(data==2){
+				index=0;
+				document.getElementById("toAdmin").style.display="block";
+				document.getElementById("Inventory").style.display="none";
+				
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+	
+}
+
+function user_info(){
+
+	$.ajax({
+		method: "POST",
+		url: "user_info.php",
+		async:true,
+		success: function(data) {
+			document.getElementById("myNav1").innerHTML=data;	
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+function login(){
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	var radio_user=document.getElementById("r1");
+	var admin=document.getElementById("r2");
+	
+	if(radio_user.checked==true) var identity="users";
+	else if(admin.checked==true) var identity="administrator";
+	
+	console.log(username);
+	console.log(password);
+	console.log(radio_user.checked);
+	console.log(admin.checked);
+	console.log(identity);
+	
+	$.ajax({
+		method: "POST",
+		url: "login.php",
+		data:{"username":username,"password":password,"identity":identity},
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==1){
+				check_account();
+				document.getElementById("feedback").innerHTML="logged in";
+				alert("Login successfully!");	
+				window.location.replace("homepage.html");
+			}
+			else if(data==0) document.getElementById("feedback").innerHTML="check input again";	
+			else if(data==2){
+				document.getElementById("toAdmin").style.display="block";
+				window.location.replace("administration.html");
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+}
+
+function quit(){
+	$.ajax({
+		method: "POST",
+		url: "logout.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==1){
+				check_account();
+				document.getElementById("feedback").innerHTML="logged out";
+				alert("Logout successfully!");	
+				window.location.href="homepage.html";
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+</script>
+</html>

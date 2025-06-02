@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="background-color: aliceblue;padding: 20px;">
+    <div>
+        <h1>LLMused: {{ data['question']["LLMused"] }}</h1>
+        <p>Question: {{ data['question']["text"] }}</p>
+        <p>Subtopic: {{ data['question']["subtopic"] }}</p>
+        <p>Topic: {{ data['question']["topic"] }}</p>
+        <p>ID: {{ data['question']["id"] }}</p>
+        <p>LLMScore: {{ data['question']["score"] }}</p>
+        <p>LLMAnswer Type: {{ data['question']["answerType"] }}</p>
+        <img src='{{ data["question"]["answer"] }}' alt="Answer Image" style="max-width: 100%;"/>
+        <div style="margin-top: 10px;">
+            <button class="btn btn-primary" onclick="experimentHandler('{{  data['question']['text'] }}','{{data['question']['courseId']}}' )">update
+                Question
+            </button>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <h1>Comments</h1>
+        {% for item in data['listComment'] %}
+        <div style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+            <p>User: {{ item["user"][0]['email'] }}</p>
+            <p>Comment: {{ item["text"] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 20px;">
+        <textarea class="form-control" id="textareas" placeholder="Please input comment"></textarea>
+        <div style="margin-top: 10px;">
+            <button class="btn btn-primary" onclick="Submit()">Submit</button>
+        </div>
+    </div>
+    <div class="modal fade" id="experimentModal" tabindex="-1" role="dialog" aria-labelledby="experimentModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="experimentModalLabel">Please conduct your question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="experimentForm">
+                        <div class="form-group">
+                            <label for="textInput">Please revise your question</label>
+                            <input disabled type="text" class="form-control" id="textInput" placeholder="Enter question">
+                        </div>
+                        <div class="form-group">
+                            <label for="courseIdInput">courseId</label>
+                            <input disabled type="text" class="form-control" id="courseIdInput" placeholder="Enter courseId">
+                        </div>
+                        <div class="form-group">
+                            <label for="LLMusedInput">LLM used</label>
+                            <input type="text" class="form-control" id="LLMusedInput" placeholder="Enter LLM used">
+                        </div>
+                        <div class="form-group">
+                            <label for="scoreInput">Image</label>
+                            <br>
+                            <input type="file" id="myInputFile" name="inputFile" style="display:none"
+                                   onchange="changeAgentContent()"/>
+                            <input type="text" value="" disabled id="inputFileAgent"/>
+                            <input type="button" onclick="myInputFileClick()" value="upload"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="scoreInput">score</label>
+                            <input type="number" class="form-control" id="scoreInput" placeholder="Enter score [0-5]"
+                                   min="0" max="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="topicInput">Topic</label>
+                            <input type="text" class="form-control" id="topicInput" placeholder="Enter Topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="subtopicInput">subtopic</label>
+                            <input type="text" class="form-control" id="subtopicInput" placeholder="Enter subtopic">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="submitExperimentData()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+        function Submit(){
+        var data={
+              question_id: {{ data['question']["id"] }},
+              text: $('#textareas').val(),
+        }
+
+        $.ajax({
+            url: '/comment/save',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                console.log(response)
+                  location.reload();
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+
+
+
+        }
+        function myInputFileClick(){
+            $('#myInputFile').click();
+
+        }
+        var imageUrl = ""
+        function changeAgentContent(){
+            document.getElementById("inputFileAgent").value = $('#myInputFile').val()
+                var file = $('#myInputFile')[0].files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+              $.ajax({
+                 url: '/question/upload',
+                 type: 'POST',
+                 data: formData,
+                 processData: false,
+                 contentType: false,
+                 success: function(response) {
+                 imageUrl = response['file_path'];
+            }
+            })
+
+        }
+        function experimentHandler(question,courseId) {
+            console.log("Experiment button clicked for question:", question);
+            $('#textInput').val(question);
+            $('#courseIdInput').val(courseId);
+            $('#experimentModal').modal('show');
+        }
+
+        function submitExperimentData() {
+        var experimentData = {
+            oid: {{ data['question']["id"] }}
+            text: $('#textInput').val(),
+            LLMused: $('#LLMusedInput').val(),
+            answer: imageUrl,
+            answerType:'img',
+            score: $('#scoreInput').val(),
+            topic: $('#topicInput').val(),
+            subtopic: $('#subtopicInput').val(),
+            courseId: $('#courseIdInput').val(),
+        };
+
+        console.log("Submitting experiment data:", experimentData);
+
+        $.ajax({
+            url: '/question/add',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(experimentData),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                 console.log('Experiment data added:', response);
+                // 显示成功提示
+                $('#successAlert').show();
+                // 关闭模态窗口
+                $('#experimentModal').modal('hide');
+                // 重置表单
+                $('#experimentForm')[0].reset();
+
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+textarea {
+  width: 400px;
+  height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+</html>

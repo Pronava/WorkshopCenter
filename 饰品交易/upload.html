@@ -1,0 +1,50 @@
+<html>
+    <head>
+	<style>
+	</style>
+	<link rel="stylesheet" href="upload.css">
+	
+    </head>
+    <body>
+        <div class="registerbox">
+        <form id="uploadForm" action="action_upload_coms.php" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+        <input required="" type="text" name="skin" id="skin" autocomplete="off" class="input" id="username">
+        <label class="user-label">Skin Name</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="text" name="wear" id="wear" autocomplete="off" class="input" id="password">
+        <label class="user-label">Wear Rate</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="text" name="price" id="price" autocomplete="off" class="input" id="username">
+        <label class="user-label">Sell Price</label>
+        </div><br>
+        <div>
+        <select name="category" id="category" class="dropdown">
+            <option value="AK-47">AK-47</option>
+            <option value="M4A1">M4A1</option>
+            <option value="AWP">AWP</option>
+            <option value="Desert Eagle">Desert Eagle</option>
+            <option value="Butterfly Knife">Butterfly Knife</option>
+        </select>
+        </div>
+        <div class="input-group">
+            <p style="padding-left: 10px; font-size: 18px;">Chose The Commodity Photo :</p>
+        </div>
+        <div class="input-group">
+            <input type="file" name="profile" id="profile"> </input>
+        </div><br>
+         <br>
+        <div class="input-group">
+		
+        <button class="submit" >
+         <span>Submit</span>
+        </button>
+		
+        </div><!--input-group end--><br>
+        </form>
+
+	</body>		
+		
+</html>

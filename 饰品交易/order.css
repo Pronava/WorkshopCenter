@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "opensans";
+    src: url(OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: "raleway";
+    src: url(Raleway-Regular.ttf);
+}
+
+.grid-container{
+    position: relative;
+    width:80%;
+    max-height:1000px;
+    border: 2px solid white;
+    top:40px;
+    margin: auto;
+    border-radius: 0.5rem;
+    display: block;
+    grid-gap: 5px;
+    padding: 5px;
+    overflow: scroll;
+  }
+
+.news{
+    font-family: "opensans";
+    font-size: 20px;
+    color:white;
+    position:relative;
+    margin: 18px auto;
+    width: 96%;
+    height: 240px;
+    border:2px solid white;
+    border-radius: 0.8rem;
+    display: flex;
+    /* overflow: scroll; */
+}
+
+.images{
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+.content{
+    margin-top: 2.5%;
+    margin-left: 5%;
+    float: left;
+}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to the back-end management system</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div  style="background-color: aliceblue;">
+    <div class="row">
+        <div class="col-sm-2" style="height:100vh;background-color:#000">
+            <!-- 侧边栏 -->
+            <ul class="nav nav-pills nav-stacked" style="margin-top: 20px">
+                <li role="presentation"><a href="/user/admin" style="color:#fff">Home</a></li>
+                <li role="presentation"><a href="/course/management" style="color:#fff">Course management</a></li>
+                <li role="presentation"><a href="/question/management" style="color:#fff">Question management</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9" style="text-align: center;">
+            <!-- 主区域 -->
+            <h2>Welcome to the back-end management system</h2>
+            <div id="content">
+                <input type="text" id="course" class="form-control m-t" placeholder="please input course">
+                <input type="text" id="courseType" class="form-control m-t" placeholder="please input courseType">
+                <input type="number" id="score" class="form-control m-t"
+                       placeholder="Please enter a number less than or equal to score" max="5" min="0">
+                <input type="text" id="topic" class="form-control m-t" placeholder="please input topic">
+                <input type="text" id="subtopic" class="form-control m-t" placeholder="please input subtopic">
+                <button class="btn btn-primary m-t" id="search">Search</button>
+                <table class="table table-striped table-bordered table-hover" style="margin-top: 20px;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>course</th>
+                        <th>courseType</th>
+                        <th>courseNumber</th>
+                        <th>score</th>
+                        <th>subtopic</th>
+                        <th>question</th>
+                        <th>topic</th>
+                        <th>LLMused</th>
+                        <th>answer</th>
+                        <th>View Detail</th>
+                    </tr>
+                    </thead>
+                    <tbody id="dataRows">
+                    <!-- 用户列表将在页面加载完成后由后端自动生成 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+        // 当页面加载完成后，向后端请求用户列表并渲染到页面上
+        $(document).ready(function() {
+            $.get("/course/courseList", function(responseData) {
+              if(responseData.code!==200){
+                alert(responseData.error)
+                   return
+                }
+             responseData.data.forEach(function(data) {
+             if(data.question.length== 0){
+             $("#dataRows").append(
+                    "<tr>" +
+                     "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                    "</tr>"
+                )
+                }
+            data.question.forEach(function(question) {
+                $("#dataRows").append(
+                    "<tr>" +
+                        "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + question.score + "</td>" +
+                        "<td>" + question.subtopic + "</td>" +
+                        "<td>" + question.text + "</td>" +
+                        "<td>" + question.topic + "</td>" +
+                        "<td>" + question.LLMused + "</td>" +
+                        "<td><img src='" + question.answer + "' alt='answer image' style='max-height: 100px;'></td>" +
+                        "<td><button onClick='viewCommentBtn(" + JSON.stringify(question) + ")' class='viewQuestionBtn' data-question='" + JSON.stringify(question) + "'>View Detail</button></td>" +
+                    "</tr>"
+                );
+            });
+        });
+        });
+        });
+
+        $("#search").click(function() {
+
+            var courseType = $('#courseType').val();
+            var course =  $('#course').val();
+            var topic = $('#topic').val();
+            var subtopic = $('#subtopic').val();
+            var score = $('#score').val();
+            var topic = $('#topic').val();
+            var subtopic = $('#subtopic').val();
+            // 向后端发送条件查询请求
+            $.get("/course/courseList", { course: course,courseType:courseType,topic:topic,subtopic:subtopic,score:score }, function(responseData) {
+                if(responseData.code!==200){
+                alert(responseData.error)
+                   return
+                }
+                $("#dataRows").empty(); // 清空原有表格内容
+                responseData.data.forEach(function(data) {
+              if (data.question.length == 0) {
+                $("#dataRows").append(
+                   "<tr>" +
+                     "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                    "</tr>"
+                )
+                }
+                data.question.forEach(function(question) {
+                  $("#dataRows").append(
+                    "<tr>" +
+                        "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + question.score + "</td>" +
+                        "<td>" + question.subtopic + "</td>" +
+                        "<td>" + question.text + "</td>" +
+                        "<td>" + question.topic + "</td>" +
+                        "<td>" + question.LLMused + "</td>" +
+                        "<td><img src='" + question.answer + "' alt='answer image' style='max-height: 100px;'></td>" +
+                        "<td><button onClick='viewCommentBtn(" + JSON.stringify(question) + ")' class='viewQuestionBtn' data-question='" + JSON.stringify(question) + "'>View Detail</button></td>" +
+                    "</tr>"
+                  );
+                });
+            });
+            });
+        });
+       function viewQuestion(){
+        window.open('/question/my/question', 'newTab');
+        }
+        function viewCourse(){
+        window.open('/course/get', 'newTab');
+        }
+
+        function viewCommentBtn(question){
+        window.open('/question/detail/'+question.id, 'newTab');
+        }
+        // 当点击添加用户按钮时，向后端发送添加用户的请求
+        $("#addUser").click(function() {
+            var username = $("#username").val();
+            var email = $("#email").val();
+
+            $.post("/addUser", { username: username, email: email }, function(data) {
+                // 添加成功后，将新用户添加到用户列表中
+                $("#userTable").append("<tr><td>" + username + "</td><td>" + email + "</td></tr>");
+            });
+        });
+
+        function addCourse() {
+            console.log("Experiment button clicked for question:");
+            $('#experimentModal').modal('show');
+        }
+
+
+        function submitData() {
+        var experimentData = {
+            course: $('#courseInput').val(),
+            courseNumber: $('#courseNumberInput').val(),
+            courseType: $('#courseTypeInput').val(),
+        };
+
+        console.log("Submitting experiment data:", experimentData);
+
+        $.ajax({
+            url: '/course/add',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(experimentData),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                 console.log('Experiment data added:', response);
+                // 显示成功提示
+                $('#successAlert').show();
+                // 关闭模态窗口
+                $('#experimentModal').modal('hide');
+                // 重置表单
+                $('#experimentForm')[0].reset();
+
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+    }
+
+
+
+$.ajax({
+            url: '/comment/save',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                console.log(response)
+                  location.reload();
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+
+
+
+        function myInputFileClick(){
+            $('#myInputFile').click();
+
+        }
+        var imageUrl = ""
+        function changeAgentContent(){
+            document.getElementById("inputFileAgent").value = $('#myInputFile').val()
+                var file = $('#myInputFile')[0].files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+              $.ajax({
+                 url: '/question/upload',
+                 type: 'POST',
+                 data: formData,
+                 processData: false,
+                 contentType: false,
+                 success: function(response) {
+                 imageUrl = response['file_path'];
+            }
+            })
+
+        }
+        function experimentHandler2() {
+            console.log("Experiment button clicked for question:");
+            $('#experimentModal2').modal('show');
+        }
+
+        function submitExperimentData() {
+        var experimentData = {
+            text: $('#textInput').val(),
+            LLMused: $('#LLMusedInput').val(),
+            answer: imageUrl,
+            answerType:'img',
+            score: $('#scoreInput').val(),
+            topic: $('#topicInput').val(),
+            subtopic: $('#subtopicInput').val(),
+            courseId: $('#courseIdInput').val(),
+        };
+
+        console.log("Submitting experiment data:", experimentData);
+
+        $.ajax({
+            url: '/question/add',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(experimentData),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                 console.log('Experiment data added:', response);
+                // 显示成功提示
+                $('#successAlert').show();
+                // 关闭模态窗口
+                $('#experimentModal2').modal('hide');
+                // 重置表单
+                $('#experimentForm2')[0].reset();
+
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+    }
+
+
+
+
+</script>
+<style>
+   .nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #0935ff;
+}
+
+
+    .m-t{
+        margin-top: 10px;
+    }
+
+
+
+
+
+</style>
+</html>

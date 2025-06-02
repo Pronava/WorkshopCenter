@@ -1,0 +1,270 @@
+/*font*/
+@font-face {
+  font-family: "opensans";
+  src: url(OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "raleway";
+  src: url(Raleway-Regular.ttf);
+}
+/*font over*/
+
+/*select*/
+.select{
+  position: relative;
+  width:60%;
+  margin:auto;
+  margin-top: 120px;
+  display:flex;
+}
+
+.select button{
+  font-family: "opensans";
+  position:relative;
+  width: 10%;
+  height:40px;
+  margin:auto;
+  color:#212121;
+  background-color: #f2f2f2;
+  border:2px solid #212121;
+  border-radius: 0.8rem;
+}
+
+.select button:hover{
+  border-width: 3px;
+  color:#f2f2f2;
+  background-color: #212121;
+  border-color: #f2f2f2;
+}
+
+.select button:active{
+  border-width: 3px;
+  color:#212121;
+  background-color: #f2f2f2;
+  border-color: #212121;
+}
+/*select over*/
+
+/*dropdown*/
+.dropdown {
+  position: relative;
+  margin: auto;
+  width: 35%;
+  height:30px;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  font-family: "raleway";
+}
+
+/*dropdown over*/
+
+.grid-container{
+  position: relative;
+  width:80%;
+  /*max-height:1000px;*/
+  top:40px;
+  margin: auto;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5px;
+  padding: 5px;
+}
+/*grid-container over*/
+
+/*card*/
+.card{
+ border-radius: .5rem;
+ width: 250px;
+ height: 400px;
+ padding:15px;
+ margin: 10px;
+ background: #f5f5f5;
+ position: relative;
+ overflow: visible;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.card-img {
+  background-color: #212121;
+  height: 56.25%;
+  width: 100%;
+  margin-top: auto;
+  border-radius: .5rem;
+  transition: .3s ease;
+ }
+
+ .card img{
+  height: 56.25%;
+  width: 100%;
+  border-radius: .5rem;
+  transition: .3s ease;
+ }
+
+ .card-info {
+  padding-top: 10%;
+ }
+
+ .card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+ }
+
+ .text-title {
+  font-family: "opensans";
+  font-weight:900;
+  font-size: 1.0em;
+  line-height: 1.5;
+ }
+
+ .text-body {
+  font-family: "opensans";
+  font-size: .8em;
+  padding-bottom: 15px;
+ }
+
+ .card-button {
+  font-family: "opensans";
+  border: 1px solid #252525;
+  display: flex;
+  padding: .3em;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: .3s ease-in-out;
+ }
+
+ .card-button:hover {
+  border: 2px solid #252525;
+ }
+
+ .card-button>a{
+  text-decoration: none;
+	color:black;
+}
+
+.searchcontainer{
+  position:relative;
+  top:30px;
+  width:80%;
+  margin:auto;
+}
+
+/* this is a recreation of twitter search in css */
+.searchbar {
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  color: #202124;
+  display: flex;
+  z-index: 3;
+  height: 44px;
+  background: white;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  margin-left:50% ;
+  width: 40%;
+}
+
+.searchbar:hover {
+  box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+  border-color: rgba(223,225,229,0);
+}
+
+.searchbar-wrapper {
+  flex: 1;
+  display: flex;
+  padding: 5px 8px 0 14px;
+}
+
+.searchbar-left {
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  color: #202124;
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+  margin-top: -5px;
+}
+
+.search-icon-wrapper {
+  margin: auto;
+}
+
+.search-icon {
+  margin-top: 3px;
+  color: #9aa0a6;
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+}
+
+.searchbar-icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.searchbar-center {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.searchbar-input-spacer {
+  color: transparent;
+  flex: 100%;
+  white-space: pre;
+  height: 34px;
+  font-size: 16px;
+}
+
+.searchbar-input {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, .87);
+  word-wrap: break-word;
+  outline: none;
+  display: flex;
+  flex: 100%;
+  margin-top: -37px;
+  height: 34px;
+  font-size: 16px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.searchbar-clear-icon {
+  margin-right: 12px
+}
+
+.searchbar-right {
+  display: flex;
+  flex: 0 0 auto;
+  margin-top: -5px;
+  align-items: stretch;
+  flex-direction: row
+}
+
+.sbutton{
+  position: relative;
+  margin-right: 8%;
+  border: 1.5px solid rgb(9, 9, 9);
+  border-radius: 0.8rem;
+  background-color: white;
+  color: #9aa0a6;
+}
+
+.sbutton:hover{
+  border: 2.5px solid rgb(9, 9, 9);
+  border-radius: 0.8rem;
+}

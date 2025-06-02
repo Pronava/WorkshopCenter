@@ -1,0 +1,728 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/7de8422208.js" crossorigin="anonymous"></script>
+
+<style>
+
+.bar1{
+	text-align:center;
+	background-image:url("https://external-preview.redd.it/N3c_Qf1NtiCfZjjepvgXzf_v19OWjxUWqEqueyMpSpA.jpg?auto=webp&s=c5c10236d954bae8dab9a1f3b56fb18f1b118b2a");
+	background-repeat: no-repeat;
+	text-shadow: 2px 3px #888888;
+	padding:10px;
+	border-bottom: 3.5px purple solid;
+	background-size: 100% 400px;
+	height:90px;
+	transition:1s;
+}
+.bar1:hover{
+	height:300px;
+}
+.bar2{
+	height:50px;
+	padding:20px;
+	text-shadow: 2px 3px #888888;
+	text-align:center;
+	background-color:#F5F5F5;
+}
+.buttons{
+	text-align:center;
+	background-color:#F5F5F5;
+	padding-top:10px;
+	padding-bottom:20px;
+}
+.buttons>button{
+	border:3px solid lightgray;
+	padding:10px;
+	width:22%;
+	height:50px;
+	font-family:Arial;
+	/*text-shadow: 2px 3px 6px #888888;*/
+}
+.buttons>button:hover{
+	border:2.5px solid black;
+}
+.buttons>button:focus{
+	border:2.5px solid black;
+}
+
+.search{
+	border:2.5px solid lightgray;
+	border-radius:10px;
+	width:60%;
+	margin-top:30px;
+	margin-left:20%;
+	margin-right:20%;
+	padding:5px;
+	padding-top:8px;
+	padding-left:12px;
+	display:block;
+}
+.search:hover{
+	border:2.5px solid black;
+}
+.search:focus-within{
+	border:2.5px solid black;
+}
+input:focus{
+	background-color:white;
+    outline: none;
+}
+.sButtom:active {
+	outline: none;
+	border: none;
+}
+.sButtom:focus {outline:0;}
+
+.deletion{
+	border:2.5px solid lightgray;
+	border-radius:10px;
+	width:60%;
+	margin-top:30px;
+	margin-left:20%;
+	margin-right:20%;
+	padding:5px;
+	padding-top:8px;
+	padding-left:12px;
+	display:none;
+}
+.deletion:hover{
+	border:2.5px solid black;
+}
+.deletion:focus-within{
+	border:2.5px solid black;
+}
+.dButtom:active {
+	outline: none;
+	border: none;
+}
+.dButtom:focus {outline:0;}
+
+.news{
+	text-align:center;
+	display:none;
+}
+
+.result{
+	
+}
+.outcome{
+	background-color:#F5F5F5;
+	text-align:center;
+}
+.photo{
+	height:300px;
+	width:350px;
+	border-radius:25% 10%;
+	border: 2px gray solid;
+	box-shadow: 2px 4px 3px #888888;
+	transition:1s;
+}
+.photo:hover{
+	border-radius:10%;
+	height:305px;
+	width:355px;
+}
+.head_img{
+	height:50px;
+	width:50px;
+	border-radius:100%;
+	transition:0.5s;
+}
+.head_img:hover{
+	height:60px;
+	width:60px;
+	cursor:pointer;
+}
+.head_img:focus+.user-info{
+	display:block;
+}
+.user-info{
+	font-family:Arial;
+	color:gray;
+}
+.user-info:hover{
+	display:block;
+}
+.user-info{
+	transition:0.5s;
+	font-size: 8px;
+	display:none;
+}
+.feedback{
+	
+}
+.update_coms{
+	text-align:center;
+	background-color:#F5F5F5;
+	display:none;
+}
+.update_coms>input{
+	border:2.5px solid gray;
+	border-radius:5px;
+	width:350px;
+	padding:5px;
+	margin:5px;
+}
+.update_coms>input:hover{
+	border:2.5px solid black;
+}
+.update_coms>input:focus{
+	border:2.5px solid black;
+}
+.VTI{
+	display:none;
+	background-color:#F5F5F5;
+	grid-template-columns: repeat(2, 50%);
+	padding:10px;
+}
+.VTI-item{
+	color:gray;
+	margin:10px;
+	text-align:center;
+}
+.VTI-item2 {
+	text-align:center;
+	color:gray;
+	border-bottom:3.5px solid gray;
+	font-family:Arial;
+	margin:20px;
+	grid-column: 1 / span 2;
+	margin-bottom:10px;
+}
+.VTI_photo{
+	height:200px;
+	width:250px;
+	border-radius:25% 10%;
+	border: 2px gray solid;
+	box-shadow: 2px 4px 3px #888888;
+	margin:10px;
+	transition:1s;
+}
+.VTI_photo:hover{
+	border-radius:10%;
+	height:305px;
+	width:355px;
+}
+.addBox{
+	height:250px;
+	width:60%;
+	min-height:250px;
+	max-height:250px;
+	min-width:60%;
+	max-width:60%;
+	border:3px solid lightgray;
+	border-radius:10px;
+	padding:20px;
+	margin:20px;
+	font-family:Arial;
+	color:gray;
+	font-size:20px;
+}
+.addBox:hover{
+	border:3px solid black;
+}
+.addBox:focus{
+	border:3px solid black;
+}
+.aButtom{
+	border:2.5px solid lightgray;
+}
+.aButtom:hover{
+	border:2.5px solid black;
+}
+.aButtom:focus{
+	border:2.5px solid black;
+}
+.item_list{
+	
+}
+.list_table{
+	text-align:center;
+	width:60%;
+	border-collapse: collapse;
+	border: 2px solid gray;
+	box-shadow:0px 3px 8px gray;
+	color:gray;
+	margin:0 auto;
+	transition:1s;
+}
+tr{
+	border-bottom:1px solid black;
+}
+tr:hover{
+	background-color:lightgray;
+}
+td{
+	font-family:Arial;
+}
+/*.footer:before{
+	content: "";
+	position:fixed;
+	left: 0;
+	right: 0;
+	z-index: -1; 
+	display: block;
+	height:100%;
+	width:100%;
+	display: block;
+	background-image:url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/60922a17-3f6c-4318-a975-69d2548be2d7/d9l39ij-ba7bacf8-e536-4e24-9d05-40c6809fe9e7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYwOTIyYTE3LTNmNmMtNDMxOC1hOTc1LTY5ZDI1NDhiZTJkN1wvZDlsMzlpai1iYTdiYWNmOC1lNTM2LTRlMjQtOWQwNS00MGM2ODA5ZmU5ZTcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4SRWTKxRpZwqZb_mmnTpJghyasBGZup5eULNOlRmGmA');
+	background-size: 100% 400px;
+	background-repeat: no-repeat;
+}*/
+.footer{
+	background-image:url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/60922a17-3f6c-4318-a975-69d2548be2d7/d9l39ij-ba7bacf8-e536-4e24-9d05-40c6809fe9e7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYwOTIyYTE3LTNmNmMtNDMxOC1hOTc1LTY5ZDI1NDhiZTJkN1wvZDlsMzlpai1iYTdiYWNmOC1lNTM2LTRlMjQtOWQwNS00MGM2ODA5ZmU5ZTcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4SRWTKxRpZwqZb_mmnTpJghyasBGZup5eULNOlRmGmA');
+	background-size: 100% 400px;
+	background-repeat: no-repeat;
+	border-top:3.5px solid black;
+	/*background-color:#2F4F4F;*/
+	color:lightgray;
+	font-family:Arial;
+}
+.footer_info{
+	transition:0.5s;
+}
+.footer_info:hover{
+	color:white;
+	transform: translateX(10px);
+}
+.footer_text:hover{
+	color:white;
+}
+.footer_link{
+	color:lightgray;
+}
+.footer_link:hover{
+	color:white;
+}
+.fButtom{
+	border:2.5px solid lightgray;
+	color:lightgray;
+	background-color:#2F4F4F;
+}
+.fButtom:hover{
+	border:2.5px solid black;
+}
+.fButtom:focus{
+	border:2.5px solid black;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+
+
+<div class="bar1"> <h1 style="color:white;font-family:Arial Black;"> ADMINISTRATOR </h1></div>
+<div class="bar2"> <h5 style="color:white;font-family:Arial Black;"> SELECT OPERATION </h5></div>
+
+<div class="buttons">
+<button onclick="unlock_search()" style="color:gray;"> <i class="fa-solid fa-magnifying-glass" ></i> sreach </button>
+<button onclick="unlock_deletion()" style="color:gray;"><i class="fa-solid fa-trash-can-arrow-up"></i> deletion </button>
+<button onclick="unlock_news()" style="color:gray;"> <i class="fa-solid fa-file-circle-plus"></i> add news </button>
+<button onclick="unlock_VTI()" style="color:gray;"> <i class="fa-solid fa-eye"></i> view Trading Information</button>
+<button onclick="quit()" style="width:10%;color:gray;"><i class="fa-solid fa-right-from-bracket"></i> logout</button>
+</div>
+ 
+
+
+<div id="remaining_items" style="text-align:center;margin-bottom:5px;padding-bottom:5px;border-bottom:3.5px solid gray;background-color:#F5F5F5;color:gray;"></div>
+
+<div class="selectedOption">
+	<div class="search" id="search">
+		<input id="searchBox" placeholder="search comodity by ID (on sell)" style="width:95%; border-top:none;border-left:none;border-bottom:none;border-right:2.5px solid lightgray;"></input>	
+	<button onclick="search()" class="sButtom" id="sButtom" style="border:none;background-color:white;"><i class="fa-solid fa-magnifying-glass" style="color:gray;"></i></button>
+	</div>
+	
+	<div class="deletion" id="deletion">
+		<input id="deleteBox" placeholder="delete comodity by ID" style="width:95%; border-top:none;border-left:none;border-bottom:none;border-right:2.5px solid lightgray;"></input>	
+	<button onclick="delete_com()" class="dButtom" id="dButtom" style="border:none;background-color:white;"><i class="fa-solid fa-trash-can-arrow-up" style="color:gray;"></i></button>
+	</div>
+	
+	<div class="VTI" id="VTI">
+	</div>	
+	
+	<div class="news" id="news">
+		<textarea class="addBox" id="addBox" placeholder="type something there..."></textarea><br>
+	<button onclick="add_news()" class="aButtom" id="aButtom" id="aButtom" style="background-color:white;color:gray;padding:5px;padding-left:15px;padding-right:15px;">release news</button>
+	</div>
+	
+	<div id="hint" style="text-align:center;font-family:Arial;color:purple;font-size:10px;"> </div>
+</div>
+
+	</div>
+	
+	<div class="result">
+		<div style="background-color:#F5F5F5;color:gray; margin-top:10px;margin-bottom:10px;padding-left:20px;padding:5px; box-shadow:0px 5px 10px gray; border-radius:0px 0px 10px 15px;" >process result:</div>
+		<div class="outcome" id="outcome"></div>
+	</div>
+	
+	<div class="update_coms" id="update_coms">
+		<p style='color:gray;font-family:Arial;font-size:25px;border-top:3.5px solid gray;padding-top:5px;'>Fill In The Form</p>
+		<input id="quality" placeholder="new quality"></input><br>
+		<input id="skin_name" placeholder="new skin name"></input><br>
+		<input id="wear_rate" placeholder="new wear rate"></input><br>
+		<input id="price" placeholder="new price"></input><br>
+		
+		<div id="hint_update" style="text-align:center;font-family:Arial;color:purple;font-size:10px;"></div>
+		<button onclick="modify()" class="aButtom" style="margin:10px;padding:5px;color:gray;font-family:Arial;">upload</button>	
+		<button onclick="hide('update_coms')" class="aButtom" style="margin:10px;padding:5px;color:gray;font-family:Arial;">hide form</button>	
+	</div>
+	
+	<div style="margin:5px;padding:5px;margin-bottom:10px;text-align:center;border-top:3.5px solid gray;">
+	<button onclick='show_list()' class="aButtom" id="show_list" style="margin:2px;color:gray;">GET Information List</button><button onclick='hide_list()' class="aButtom" id="hide_list" style="margin:2px;color:gray;">HIDE Information List</button>
+	</div>
+	
+	<div class="item_list" id="item_list">
+	</div>
+	
+	<div>
+		<button onclick='previous_page()' class="aButtom" id="previous_page" style="float:left;color:gray;padding:5px;"><i class="fa-solid fa-backward"></i> previous</button>
+		<button onclick='next_page()' class="aButtom" id="next_page" style="float:right;color:gray;padding:5px;">next <i class="fa-solid fa-forward"></i></button>
+	</div>
+	<br><br>
+	<div class="footer">
+		<div class="footer_info" style="margin:10px;padding:10px;padding-bottom:0px;font-size:30px;">DECLARATION</div>
+		<div class="footer_text" style="margin:10px;">This website is designed for an administator. It is hoped that the page is clear and useful.
+		<br>If any troubles or bugs here, please contact the developer via email.</div>
+		<div class="footer_info" style="margin:10px;margin-bottom:0px;padding:10px;padding-bottom:0px;font-size:20px;">DEVELOPER</div>
+		<div class="footer_text" style="padding:10px;font-size:15px;padding-bottom:20px;border-bottom:3.5px solid gray;margin-left:10px;margin-right:10px;">Chinese Name: 胡世杰 <br>English Name: Evan
+		<br><i class="fa-solid fa-envelope"></i> email address: <a class="footer_link" href ='mailto: r130026047@mail.uic.edu.cn' style="text-decoration:none;">r130026047@mail.uic.edu.cn</a></div>
+		<div style="padding:20px;padding-top:10px;padding-bottom:40px;"><span>© Administration</span><span style="float:right;padding-right:20px;"><button onclick="quit()" class="fButtom"><i class="fa-solid fa-right-from-bracket"></i> logout</button></div>
+	</div>
+</body>
+
+
+<script>
+
+var start_position=0;
+var all_rows;
+
+window.onload=function(){
+	count_coms();
+	VTI();
+	get_list();
+	get_rows();
+	check_account();
+}
+function check_account(){
+
+	$.ajax({
+		method: "POST",
+		url: "check_account.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==0){
+				window.location.replace("homepage.html");
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+	
+}
+function count_coms(){
+	$.ajax({
+		method: "POST",
+		url: "count_coms.php",
+		async:true,
+		success: function(data) {
+			document.getElementById("remaining_items").innerHTML="<i class='fa-solid fa-cubes-stacked'></i> "+data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+function get_list(){
+	$.ajax({
+		method: "POST",
+		url: "get_list.php",
+		data:{"start_position":start_position},
+		async:true,
+		success: function(data) {
+			document.getElementById("item_list").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+}
+function get_rows(){
+	$.ajax({
+		method: "POST",
+		url: "get_rows.php",
+		async:true,
+		success: function(data) {
+			all_rows=data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+}
+function hide(element){
+	document.getElementById(element).style.display="none";
+}
+</script>
+
+<script>
+function unlock_search(){
+	document.getElementById("news").style.display="none";
+	document.getElementById("deletion").style.display="none";
+	document.getElementById("VTI").style.display="none";
+	document.getElementById("outcome").innerHTML="";
+	document.getElementById("update_coms").style.display="none";
+	document.getElementById("hint").innerHTML="";
+	document.getElementById("search").style.display="block";
+}
+function unlock_deletion(){
+	document.getElementById("news").style.display="none";
+	document.getElementById("search").style.display="none";
+	document.getElementById("VTI").style.display="none";
+	document.getElementById("outcome").innerHTML="";
+	document.getElementById("update_coms").style.display="none";
+	document.getElementById("hint").innerHTML="";
+	document.getElementById("deletion").style.display="block";
+}
+function unlock_VTI(){
+	document.getElementById("news").style.display="none";
+	document.getElementById("search").style.display="none";
+	document.getElementById("deletion").style.display="none";
+	document.getElementById("outcome").innerHTML="";
+	document.getElementById("update_coms").style.display="none";
+	document.getElementById("hint").innerHTML="";
+	document.getElementById("VTI").style.display="grid";
+}
+function unlock_news(){
+	document.getElementById("search").style.display="none";
+	document.getElementById("deletion").style.display="none";
+	document.getElementById("VTI").style.display="none";
+	document.getElementById("outcome").innerHTML="";
+	document.getElementById("update_coms").style.display="none";
+	
+	document.getElementById("hint").innerHTML="";
+	document.getElementById("news").style.display="block";
+}
+function unlock_modify(){
+	document.getElementById("hint_update").innerHTML="";
+	document.getElementById("update_coms").style.display="block";
+}
+function show_list(){
+	console.log("show");
+	document.getElementById("previous_page").style.display="";
+	document.getElementById("next_page").style.display="";
+	document.getElementById("list_table").style.display="";
+}
+function hide_list(){
+	console.log("hide");
+	document.getElementById("previous_page").style.display="none";
+	document.getElementById("next_page").style.display="none";
+	document.getElementById("list_table").style.display="none";
+}
+</script>
+
+<script>
+function previous_page(){
+	var temp=start_position-50;
+	if(temp<0) return 0;
+	
+	start_position-=50;
+	console.log(start_position);
+	get_list();
+}
+function next_page(){
+	var temp=start_position+50;
+	if(temp>all_rows) return 0;
+	
+	start_position+=50;
+	console.log(start_position);
+	get_list();
+}
+</script>
+
+<script>
+
+	var rows=4;
+
+function search(){
+	
+	var searchID=document.getElementById("searchBox").value;
+	if(searchID==""){
+		console.log("null");
+		document.getElementById("hint").innerHTML="please fill in value";
+		return 0;
+	}
+	else if(searchID!="")
+		document.getElementById("hint").innerHTML="";
+		
+	console.log(searchID);
+	
+	$.ajax({
+		method: "POST",
+		data:{"searchID":searchID},
+		url: "search.php",
+		async:true,
+		success: function(data) {
+			document.getElementById("hint").innerHTML="";
+			document.getElementById("outcome").innerHTML=data;
+			window.scrollTo({top:280, behavior: 'smooth'});
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+	if(document.getElementById("outcome").value=="")
+		document.getElementById("outcome").innerHTML="no record";
+}
+
+function delete_com(){
+	
+	var deleteID=document.getElementById("deleteBox").value;
+	if(deleteID==""){
+		console.log("null");
+		document.getElementById("hint").innerHTML="please fill in value";
+		return 0;
+	}
+	else if(deleteID!="")
+		document.getElementById("hint").innerHTML="";
+		
+	console.log(deleteID);
+	
+	$.ajax({
+		method: "POST",
+		data:{"deleteID":deleteID},
+		url: "delete.php",
+		async:true,
+		success: function(data) {
+			document.getElementById("hint").innerHTML="";
+			document.getElementById("outcome").innerHTML=data;
+			count_coms();
+			get_list();
+			window.scrollTo({top:280, behavior: 'smooth'});
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+}
+
+function modify(){
+	
+	var searchID=document.getElementById("searchBox").value;
+	var quality=document.getElementById("quality").value;
+	var skin_name=document.getElementById("skin_name").value;
+	var wear_rate=document.getElementById("wear_rate").value;
+	var price=document.getElementById("price").value;
+
+	if(quality==""||skin_name==""||wear_rate==""||price==""){
+		document.getElementById("hint_update").innerHTML="check all inputs agian";
+		return 0;
+	}
+	if(wear_rate>=1||wear_rate<=0){
+		document.getElementById("hint_update").innerHTML="wear rate should between 0 and 1";
+		return 0;
+	}
+
+	$.ajax({
+		method: "POST",
+		data:{"searchID":searchID,"quality":quality,"skin_name":skin_name,"wear_rate":wear_rate,"price":price},
+		url: "modify.php",
+		async:true,
+		success: function(data) {		
+			if(data=="successfully updated"){
+				document.getElementById("hint_update").innerHTML="successfully updated";
+				search();
+			}
+			else
+				document.getElementById("hint_update").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+
+}
+
+function add_news(){
+	var news=document.getElementById("addBox").value;
+	if(news.length==0){
+		document.getElementById("hint").innerHTML="please type something";
+		return 0;
+	}
+	console.log(news.length);
+	$.ajax({
+		method: "POST",
+		url: "add_news.php",
+		data:{"news":news},
+		async:true,
+		success: function(data) {	
+			document.getElementById("hint").innerHTML="";
+			document.getElementById("hint").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+}
+
+function VTI(){
+
+	$.ajax({
+		method: "POST",
+		url: "VTI.php",
+		data:{"rows":rows},
+		async:true,
+		success: function(data) {
+			document.getElementById("VTI").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+		}
+	});
+
+}
+
+function more(){
+	rows+=4;
+	VTI();
+}
+function recovery(){
+	window.scrollTo({top: 0, behavior: 'smooth'});
+	rows=4;
+	VTI();
+}
+
+function quit(){
+	$.ajax({
+		method: "POST",
+		url: "logout.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==1){
+				window.location.replace("homepage.html");
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+</script>
+
+<script>
+
+
+</script>
+
+</html>

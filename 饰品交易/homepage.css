@@ -1,0 +1,370 @@
+/*font*/
+@font-face {
+    font-family: "opensans";
+    src: url(OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "raleway";
+    src: url(Raleway-Regular.ttf);
+}
+/*font over*/
+/*navigation bar*/
+.topnav {
+    font-family:"raleway";
+    position:relative;
+    margin:auto;
+    width:80%;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-image: linear-gradient(rgb(51, 51, 51), rgba(51,51,51,0));
+    display:flex;
+  }
+  
+  .topnav a {
+    float: left;
+    width:15%;
+    color: #f1f1f1;
+    text-align: center;
+    margin:10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    border:solid 2px;
+    border-radius: 0.6rem;;
+    border-color: #f1f1f1;
+  }
+  
+  .topnav a.active {
+    border:solid 2px;
+    border-radius: 0.6rem;;
+    border-color: #f1f1f1;
+  }
+
+/*navigation bar end*/
+
+/*background image*/
+body {
+    background-image: url('swat.jpg');
+  }
+/*background image end*/
+
+/*slides*/
+* {box-sizing: border-box;}
+.mySlides {display: none;}
+img {margin:auto;}
+
+/* Slideshow container */
+.slideshow-container {
+  width:30%;
+  position: relative;
+  top:100px;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-family: "raleway";
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+/*slides over*/
+
+/*curtain*/
+.overlay {
+  font-family: "raleway";
+  height: 0%;
+  width: 60%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 20%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.overlay-content p{
+  color:white;
+  font-size: 20px;
+  font-family: "opensans";
+}
+
+.overlay-content a{
+  color:white;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "opensans";
+}
+
+.overlay-content a:hover{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.overlay-content a:active{
+  font-size: 22px;
+  font-weight: 400;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+/*curtain end*/
+
+/*input box*/
+.input-group {
+  font-family: "raleway";
+  color:#f1f1f1;
+  display:flex;
+  position: relative;
+  margin:auto;
+  width:30%;
+ }
+ 
+
+ .input {
+  width:100%;
+  font-family: "raleway";
+  border: solid 1.5px #9e9e9e;
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #f5f5f5;
+  transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+ }
+ 
+ .user-label {
+  position: absolute;
+  left: 15px;
+  color: #e8e8e8;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 150ms cubic-bezier(0.4,0,0.2,1);
+ }
+ 
+ .input:focus, input:valid {
+  outline: none;
+  border: 1.5px solid #1a73e8;
+ }
+ 
+ .input:focus ~ label, input:valid ~ label {
+  transform: translateY(-50%) scale(0.8);
+  background-color: #212121;
+  padding: 0 .2em;
+  color: #2196f3;
+ }
+/*input box end*/
+
+/*check box*/
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+ }
+ 
+ .container {
+  font-family: "raleway";
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  overflow: hidden;
+  user-select: none;
+ }
+ 
+ /* Create a custom checkbox */
+ .checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background: #f1f1f1;
+  border-radius: 7px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0,5);
+ }
+ 
+ /* When the checkbox is checked, add a blue background */
+ .container input:checked ~ .checkmark {
+  background-image: linear-gradient(#255CD2,#1D52C1)
+ }
+ 
+ /* Create the checkmark/indicator (hidden when not checked) */
+ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+ }
+ 
+ /* Show the checkmark when checked */
+ .container input:checked ~ .checkmark:after {
+  display: block;
+ }
+ 
+ /* Style the checkmark/indicator */
+ .container .checkmark:after {
+  left: 0.45em;
+  top: 0.20em;
+  width: 0.24em;
+  height: 0.6em;
+  border: solid white;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+ }
+/*check box end*/
+
+/*submit button*/
+.submit {
+  position: relative;
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: "raleway";
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  width: 40%;
+  margin:auto;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .3s;
+ }
+ 
+ .submit:active,
+ .submit:hover {
+  outline: 0;
+ }
+ 
+ .submit span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+ }
+ 
+ .submit:hover span {
+  background: none;
+ }
+ 
+ .submit:active {
+  transform: scale(0.9);
+ }
+/*submit button end*/
+
+#back{
+  font-size: 20px;
+  font-family: "opensans";
+  color:#f1f1f1;
+}
+
+.profile{
+  position:relative;
+  margin:auto;
+  width:70px;
+  height:70px;
+  border-radius: 50%;
+}

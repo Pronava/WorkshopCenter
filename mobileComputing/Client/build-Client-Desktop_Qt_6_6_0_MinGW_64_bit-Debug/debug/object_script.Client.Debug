@@ -1,0 +1,11 @@
+debug/chatwidget.o
+debug/databaseconnection.o
+debug/editaccount.o
+debug/main.o
+debug/client.o
+debug/registerwidget.o
+debug/qrc_qmake_qmake_qm_files.o
+debug/moc_chatwidget.o
+debug/moc_client.o
+debug/moc_editaccount.o
+debug/moc_registerwidget.o

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="background-color: aliceblue;">
+    <!--<input type="text" id="course" class="form-control m-t" placeholder="please input course">-->
+    <!--<input type="text" id="courseType" class="form-control m-t" placeholder="please input courseType">-->
+    <input type="text" id="topic" class="form-control m-t" placeholder="please input topic">
+    <input type="text" id="subtopic" class="form-control m-t" placeholder="please input subtopic">
+    <button class="btn btn-primary m-t" id="search">Search</button>
+
+     <!--<button class="btn btn-primary m-t" id="search-question" onclick="viewQuestion()">View My question</button>-->
+    
+    <table class="table table-striped table-bordered table-hover" style="margin-top: 30px;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>course</th>
+            <th>courseType</th>
+            <th>courseNumber</th>
+            <th>score</th>
+            <th>subtopic</th>
+            <th>question</th>
+            <th>topic</th>
+            <th>LLMused</th>
+            <th>answer</th>
+            <th>View comments</th>
+        </tr>
+        </thead>
+        <tbody id="dataRows">
+        <!-- 用户列表将在页面加载完成后由后端自动生成 -->
+        </tbody>
+    </table>
+    <!--<h2>添加用户</h2>-->
+    <!--<form id="addUserForm" class="form">-->
+    <!--<div class="form-group">-->
+    <!--<input type="text" id="username" class="form-control" placeholder="用户名">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<input type="email" id="email" class="form-control" placeholder="邮箱">-->
+    <!--</div>-->
+    <!--<button id="addUser" class="btn btn-primary">添加</button>-->
+    <!--</form>-->
+</div>
+
+<script>
+        // 当页面加载完成后，向后端请求用户列表并渲染到页面上
+        $(document).ready(function() {
+            $.get("/course/courseList", function(responseData) {
+             if(responseData.code!==200){
+                alert(responseData.error)
+                   return
+                }
+             responseData.data.forEach(function(data) {
+             if(data.question.length== 0){
+             $("#dataRows").append(
+                    "<tr>" +
+                     "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                    "</tr>"
+                )
+                }
+            data.question.forEach(function(question) {
+                $("#dataRows").append(
+                    "<tr>" +
+                        "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + question.score + "</td>" +
+                        "<td>" + question.subtopic + "</td>" +
+                        "<td>" + question.text + "</td>" +
+                        "<td>" + question.topic + "</td>" +
+                        "<td>" + question.LLMused + "</td>" +
+                        "<td><img src='" + question.answer + "' alt='answer image' style='max-height: 100px;'></td>" +
+                        "<td><button onClick='viewCommentBtn(" + JSON.stringify(question) + ")' class='viewQuestionBtn' data-question='" + JSON.stringify(question) + "'>View comment</button></td>" +
+                    "</tr>"
+                );
+            });
+        });
+        });
+        });
+
+        $("#search").click(function() {
+
+            var courseType = $('#courseType').val();
+            var course =  $('#course').val();
+            var topic = $('#topic').val();
+            var subtopic = $('#subtopic').val();
+            // 向后端发送条件查询请求
+            $.get("/course/courseList", { course: course,courseType:courseType,topic:topic,subtopic:subtopic }, function(responseData) {
+               if(responseData.code!==200){
+                alert(responseData.error)
+                   return
+                }
+                $("#dataRows").empty(); // 清空原有表格内容
+                responseData.data.forEach(function(data) {
+              if (data.question.length == 0) {
+                $("#dataRows").append(
+                   "<tr>" +
+                     "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" +  "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                        "<td>" + "</td>" +
+                    "</tr>"
+                )
+                }
+                data.question.forEach(function(question) {
+                  $("#dataRows").append(
+                    "<tr>" +
+                        "<td>" + data.id + "</td>" +
+                        "<td>" + data.course + "</td>" +
+                        "<td>" + data.courseType + "</td>" +
+                        "<td>" + data.courseNumber + "</td>" +
+                        "<td>" + question.score + "</td>" +
+                        "<td>" + question.subtopic + "</td>" +
+                        "<td>" + question.text + "</td>" +
+                        "<td>" + question.topic + "</td>" +
+                        "<td>" + question.LLMused + "</td>" +
+                        "<td><img src='" + question.answer + "' alt='answer image' style='max-height: 100px;'></td>" +
+                        "<td><button onClick='viewCommentBtn(" + JSON.stringify(question) + ")' class='viewQuestionBtn' data-question='" + JSON.stringify(question) + "'>View comment</button></td>" +
+                    "</tr>"
+                  );
+                });
+            });
+            });
+        });
+       function viewQuestion(){
+        window.open('/question/my/question', 'newTab');
+        }
+
+        function viewCommentBtn(question){
+        window.open('/comment/commentList/'+question.id, 'newTab');
+        }
+        // 当点击添加用户按钮时，向后端发送添加用户的请求
+        $("#addUser").click(function() {
+            var username = $("#username").val();
+            var email = $("#email").val();
+
+            $.post("/addUser", { username: username, email: email }, function(data) {
+                // 添加成功后，将新用户添加到用户列表中
+                $("#userTable").append("<tr><td>" + username + "</td><td>" + email + "</td></tr>");
+            });
+        });
+
+
+
+
+</script>
+</body>
+<style>
+    .m-t{
+        margin-top: 30px;
+    }
+
+
+
+
+</style>
+</html>

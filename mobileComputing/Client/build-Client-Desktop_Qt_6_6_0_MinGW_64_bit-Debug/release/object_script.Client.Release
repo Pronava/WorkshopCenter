@@ -1,0 +1,11 @@
+release/chatwidget.o
+release/databaseconnection.o
+release/editaccount.o
+release/main.o
+release/client.o
+release/registerwidget.o
+release/qrc_qmake_qmake_qm_files.o
+release/moc_chatwidget.o
+release/moc_client.o
+release/moc_editaccount.o
+release/moc_registerwidget.o

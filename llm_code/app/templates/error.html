@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f3f3f3;
+        }
+        .result {
+            margin-top: 100px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            color: #4CAF50;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .success {
+            background: #DFF2BF;
+            color: #4F8A10;
+        }
+        .error {
+            background: #F2DEDE;
+            color: #D8000C;
+        }
+    </style>
+</head>
+<body>
+    <div class="result error">
+        <h1>error</h1>
+        <p>{{ message }}</p>
+    </div>
+</body>
+</html>

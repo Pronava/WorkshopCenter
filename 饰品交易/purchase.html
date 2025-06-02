@@ -1,0 +1,332 @@
+<html>
+<head>
+	<style>
+	
+	</style>
+
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="purchase.css">
+</head>
+<body>
+<!--curtain-->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+  <div class="input-group">
+  <input required="" type="text" name="username" id="username" autocomplete="off" class="input">
+  <label class="user-label">Username</label>
+  </div>
+  <!--input-group end-->
+  <br>
+  <div class="input-group">
+  <input required="" type="password" name="password" id="password" autocomplete="off" class="input">
+  <label class="user-label">Password</label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <label class="container">
+  <input type="radio" id="r1" name="identity" value="user">
+  <div class="checkmark"></div>&nbsp;User
+  </label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <label class="container">
+  <input type="radio" id="r2" name="identity" value="admin">
+  <div class="checkmark"></div>&nbsp;Admin
+  </label>
+  </div><!--input-group end-->
+  <br>
+  <div class="input-group">
+  <button type="submit" class="submit" onclick="login()">
+  <span>Submit</span>
+  </button>
+  </div><!--input-group end-->
+  
+  <div id="feedback" style="color:white;"></div>
+  
+  <div id="toAdmin"><a href="administration.html" style="font-size:10px;">To Admin page</a></div>
+  
+  <div class="input-group">
+    <a href="register.html" class="register">Register</a>
+  </div>
+  
+  </div><!--overlay-content end-->
+</div>
+
+<div id="myNav1" class="overlay">
+  
+</div>
+
+<!--javascript for curtain-->
+<!--javascript for curtain end-->
+<!--curtain end-->
+<!--navigation bar-->
+<div class="topnav"> 
+  <img src="csgo-trade-logo.png" alt="logo" width="128px" height="72px">
+  <a href="homepage.html">Home</a>
+  <a class="active" href="purchase.html">Purchase</a>
+  <a href="news.html">News</a>
+  <a href="inventory.html" id="Inventory">Inventory</a>
+  <a><span onclick="openNav()">Account</span></a>
+</div>
+<!--navigation bar end-->
+
+<div class="select">
+  <select id="category" class="dropdown">
+    <option value="ALL">ALL</option>
+    <option value="AK-47">AK-47</option>
+    <option value="M4A1">M4A1</option>
+    <option value="AWP">AWP</option>
+    <option value="Desert Eagle">Desert Eagle</option>
+    <option value="Butterfly Knife">Butterfly Knife</option>
+  </select>
+  <select id="quality" class="dropdown">
+    <option value="ALL">ALL</option>
+    <option value="Factory New">Factory New</option>
+    <option value="Minimal Wear">Minimal Wear</option>
+    <option value="Field-Tested">Field-Tested</option>
+    <option value="Well-Worn">Well-Worn</option>
+    <option value="Battle-Scarred">Battle-Scarred</option>
+  </select>
+  <button onclick="show_coms()">Select</button>
+</div>
+<div class="searchcontainer">
+  <div class="searchbar">
+    <div class="searchbar-wrapper">
+        <div class="searchbar-left">
+            <div class="search-icon-wrapper">
+                <span class="search-icon searchbar-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="searchbar-center">
+            <div class="searchbar-input-spacer"></div>
+            <input type="text" id="search" class="searchbar-input" maxlength="2048" name="q" autocapitalize="off" autocomplete="off" title="Search" role="combobox" placeholder="Search">
+        </div>
+        <div class="searchbar-right">
+          <button class="sbutton" onclick="show_coms()">search</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="grid-container" id="grid-container" style="overflow:scroll;">
+ 
+</div>
+
+<button onclick='more()'>more</button><button onclick='recovery()'>recovery</button>
+
+</div>
+<!--goods over-->
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+window.onload=function(){
+	show_coms();
+	check_account();
+}
+
+function openNav() {
+	if(index==0)
+		document.getElementById("myNav").style.height = "100%";
+	else if(index==1)
+		document.getElementById("myNav1").style.height = "100%";
+}
+
+function closeNav() {
+	document.getElementById("myNav").style.height = "0%";
+	document.getElementById("myNav1").style.height = "0%";
+}
+
+var rows=12;
+
+function show_coms(){
+
+  var search=document.getElementById("search").value;
+  var cate=document.getElementById("category").value;
+  var qua=document.getElementById("quality").value;
+
+  console.log(search);
+  console.log(cate);
+  console.log(qua);
+
+	$.ajax({
+		method: "POST",
+		url: "show_coms.php",
+		data:{"rows":rows,"search":search,"cate":cate,"qua":qua},
+		async:true,
+		success: function(data) {
+			document.getElementById("grid-container").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+	
+	/*$.ajax({
+		method: "POST",
+		url: "show_coms.php",
+		data:{"rows":rows},
+		async:true,
+		success: function(data) {
+			document.getElementById("grid-container").innerHTML=data;
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});*/
+
+}
+
+function more(){
+	rows+=8;
+	show_coms();
+}
+function recovery(){
+	rows=12;
+	show_coms();
+}
+
+function check_account(){
+
+	$.ajax({
+		method: "POST",
+		url: "check_account.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==0){
+				index=0;
+				document.getElementById("toAdmin").style.display="none";
+				document.getElementById("Inventory").style.display="none";
+			}
+			else if(data==1){
+				index=1;
+				user_info();
+				document.getElementById("toAdmin").style.display="none";
+				document.getElementById("Inventory").style.display="block";
+			}
+			else if(data==2){
+				index=0;
+				document.getElementById("toAdmin").style.display="block";
+				document.getElementById("Inventory").style.display="none";
+				
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+	
+}
+
+function login(){
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	var radio_user=document.getElementById("r1");
+	var admin=document.getElementById("r2");
+	
+	if(radio_user.checked==true) var identity="users";
+	else if(admin.checked==true) var identity="administrator";
+	
+	console.log(username);
+	console.log(password);
+	console.log(radio_user.checked);
+	console.log(admin.checked);
+	console.log(identity);
+	
+	$.ajax({
+		method: "POST",
+		url: "login.php",
+		data:{"username":username,"password":password,"identity":identity},
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==1){
+				check_account();
+				document.getElementById("feedback").innerHTML="logged in";
+				alert("Login successfully!");	
+				window.location.replace("homepage.html");
+			}
+			else if(data==0) document.getElementById("feedback").innerHTML="check input again";	
+			else if(data==2){
+				document.getElementById("toAdmin").style.display="block";
+				window.location.replace("administration.html");
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+}
+
+function user_info(){
+
+	$.ajax({
+		method: "POST",
+		url: "user_info.php",
+		async:true,
+		success: function(data) {
+			document.getElementById("myNav1").innerHTML=data;	
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+function quit(){
+	$.ajax({
+		method: "POST",
+		url: "logout.php",
+		async:true,
+		success: function(data) {
+			console.log(data);
+			if(data==1){
+				check_account();
+				document.getElementById("feedback").innerHTML="logged out";
+				alert("Logout successfully!");	
+				window.location.href="homepage.html";
+			}
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+function buy(id){
+	var com_ID=id;
+	$.ajax({
+		method: "POST",
+		url: "buy.php",
+		data:{"com_ID":com_ID},
+		async:true,
+		success: function(data) {
+			if(data==0) alert("please login or regist first!");
+			console.log("buy");
+			console.log(data);
+			if(data!=0){
+				alert("successful purchase");
+			}
+			show_coms();
+		},
+		error: function (error) {
+			console.log(error);
+        }
+	});
+
+}
+
+	
+</script>
+</html>

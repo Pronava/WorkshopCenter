@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="background-color: aliceblue;padding: 20px;">
+    <h1>Course List</h1>
+    <div>
+        <table class="table table-striped table-bordered table-hover" style="margin-top: 30px;">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>course</th>
+                <th>course_number</th>
+                <th>course_type</th>
+                <th>operate</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.course }}</td>
+                <td>{{ item.courseNumber }}</td>
+                <td>{{ item.courseType }}</td>
+                <th>
+                    <button onclick="update('{{ item.id }}')" class="btn btn-primary" {% if item.status %} disabled {% endif %}>Make public immediately
+                    </button>
+                </th>
+            </tr>
+            {% endfor %}
+            </thead>
+        </table>
+
+    </div>
+</div>
+</body>
+<script>
+
+function update(id) {
+    $.ajax({
+            url: '/course/update',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 'id': id, 'status': 2 }),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                 location.reload();
+
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+}
+
+
+</script>
+</html>

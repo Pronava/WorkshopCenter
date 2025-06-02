@@ -1,0 +1,51 @@
+<html>
+    <head>
+	<style>
+	</style>
+	<link rel="stylesheet" href="register.css">
+	
+    </head>
+    <body>
+        <div class="registerbox">
+        <form id="uploadForm" action="action_register.php" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+        <input required="" type="text" name="userid" id="userid" autocomplete="off" class="input" id="username">
+        <label class="user-label">UserID</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="password" name="password" id="password" autocomplete="off" class="input" id="password">
+        <label class="user-label">Password</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="text" name="username" id="username" autocomplete="off" class="input" id="username">
+        <label class="user-label">Username</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="email" name="email"  id="email" class="input" id="email">
+        <label class="user-label">e-mail</label>
+        </div><br>
+        <div class="input-group">
+        <input required="" type="text" name="phone" id="phone" autocomplete="off" class="input" id="phone">
+        <label class="user-label">Phone</label>
+        </div><br>
+        <div class="input-group">
+            <input type="file" name="profile" id="profile"> </input>
+        </div><br>
+         <br>
+        <div class="input-group">
+		
+        <button class="submit" >
+         <span>Submit</span>
+        </button>
+		
+        </div><!--input-group end--><br>
+        </form>
+        <div class="input-group" >
+        <a href="homepage.html" id="back" style="font-size: 20px; text-align: center; color: aliceblue;">I have an account! Back to login</a>
+        </div>
+		
+		
+		<div id="feedback" style="color:yellow;"></div>
+	</body>		
+		
+</html>

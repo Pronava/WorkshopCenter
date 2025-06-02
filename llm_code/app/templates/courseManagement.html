@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>courseManagement</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid" style="background-color: aliceblue;">
+    <div class="row">
+        <div class="col-sm-2" style="height:100vh;background-color:#000">
+            <!-- 侧边栏 -->
+            <ul class="nav nav-pills nav-stacked" style="margin-top: 20px">
+                <li role="presentation"><a href="/user/admin" style="color:#fff">Home</a></li>
+                <li role="presentation"><a href="/course/management" style="color:#fff">Course management</a></li>
+                <li role="presentation"><a href="/question/management" style="color:#fff">Question management</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9"  style="background-color: aliceblue;padding: 20px;">
+            <h1>Course List</h1>
+            <div>
+                <table class="table table-striped table-bordered table-hover" style="margin-top: 30px;">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>course</th>
+                        <th>course_number</th>
+                        <th>course_type</th>
+                        <th>statusText</th>
+                        <th>operate</th>
+                    </tr>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.course }}</td>
+                        <td>{{ item.courseNumber }}</td>
+                        <td>{{ item.courseType }}</td>
+                        <td>{{ item.statusText }}</td>
+                        <th>
+                            {% if item.status == 2 %}
+                            <button onclick="update('{{ item.id }}',1)" class="btn btn-primary">examination passed
+                            </button>
+                            {% endif %}
+                            {% if item.status == 1 %}
+                            <button onclick="update('{{ item.id }}', 0)" class="btn btn-primary">off line
+                            </button>
+                            {% endif %}
+                            {% if item.status == 0 %}
+                            <button onclick="update('{{ item.id }}',1)" class="btn btn-primary">online
+                            </button>
+                            {% endif %}
+                            </button>
+                        </th>
+                    </tr>
+                    {% endfor %}
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+function update(id,status) {
+    $.ajax({
+            url: '/course/update',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 'id': id, 'status': status }),
+            success: function (response) {
+            if(response.code=200){
+                alert(response.error)
+                 location.reload();
+
+            }else{
+                 alert(response.error)
+            }
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to add experiment data:', error);
+                alert('Error: Unable to submit experiment data.');
+            }
+        });
+}
+
+</script>
+<style>
+   .nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #0935ff;
+}
+
+
+    .m-t{
+        margin-top: 10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</body>
+</html>

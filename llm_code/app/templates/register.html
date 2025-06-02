@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #ff0000;
+            text-align: center;
+        }
+
+        label, input[type="radio"] {
+        display: inline-block;
+        margin-right: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1>Register</h1>
+    </nav>
+
+    {% block content %}
+        <form action="{{ url_for('user.register') }}" method="post">
+
+            <label for="email">UIC Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="password1">Create a Password:</label>
+            <input type="password" id="password1" name="password1" required><br>
+            <label for="password2">Confirm your Password:</label>
+            <input type="password" id="password2" name="password2" required><br>
+
+            {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+            {% endif %}
+            <button type="submit" value="submit">Register</button>
+            <button onclick="window.open('/user/login', '_blank')">Login</button>
+        </form>
+    {% endblock %}
+</body>
+<style>
+        button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+</style>
+</html>

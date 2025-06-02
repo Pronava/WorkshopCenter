@@ -1,0 +1,4 @@
+更新依赖重新：mvn clean install
+启动项目：mvn spring-boot:run
+内网穿透，ngrok账号授权：ngrok config add-authtoken 2xttwWNT0kqcmgNdBEtaLwOSmof_7mwo8MJRABMN6x3rPyEhu
+启动ngrok转发本地端口：ngrok http 8080
