@@ -55,15 +55,6 @@ Next.js 全栈练习项目，实现服务器端渲染（SSR）和前后端数据
 ---
 
 ## 饰品交易
-传统前端网页项目，使用 HTML、CSS、JavaScript，结合 jQuery 和 Ajax 实现动态效果。  
-适合网页静态与动态交互的学习。
-
-> 示例功能：
-- 页面布局与样式设计
-- jQuery 动态效果
-- Ajax 异步请求
-
-## 饰品交易
 
 传统前端网页项目，使用 HTML、CSS、JavaScript，结合 jQuery 和 Ajax 实现动态效果。  
 适合网页静态与动态交互的学习。
