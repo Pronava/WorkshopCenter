@@ -1,6 +1,6 @@
 # WorkshopCenter 项目总览
 
-> **说明：本仓库会不定期更新，欢迎持续关注和反馈！**
+> **说明：不定期更新**
 
 ## JavaBackEndPractice
 Java Spring Boot 后端练习项目，涵盖了基础的RESTful接口设计、数据库操作及安全配置。  
