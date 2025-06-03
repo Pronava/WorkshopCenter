@@ -51,6 +51,7 @@ Next.js 全栈练习项目，实现服务器端渲染（SSR）和前后端数据
 <div style="display: flex; gap: 10px;">
   <img src="NextJs_Workshop/image/1.png" alt="NextJs_Workshop示意图1" width="300" />
   <img src="NextJs_Workshop/image/3.png" alt="NextJs_Workshop示意图2" width="300" />
+  <img src="NextJs_Workshop/image/4.png" alt="NextJs_Workshop示意图3" width="300" />
   <img src="NextJs_Workshop/image/2.png" alt="NextJs_Workshop示意图3" width="300" />
 </div>
 
