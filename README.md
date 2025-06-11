@@ -72,5 +72,23 @@ Next.js 全栈练习项目，实现服务器端渲染（SSR）和前后端数据
   <img src="饰品交易/相关图片/er.png" alt="饰品交易示意图3" width="300" />
 </div>
 
+---
 
+## MyAudioApp
+这是一个音频处理应用，提供音高对比、实时音频录制和可视化等功能。  
+适合学习音频分析和前端实时数据可视化。
 
+> 示例功能：
+- 音频切片上传和播放
+- 实时音高比较与反馈
+- 可视化音频波形图和音高走势
+
+示意图：  
+<div style="display: flex; gap: 10px;">
+  <img src="my-audio-app/image/1.png" alt="MyAudioApp示意图1" width="300" />
+  <img src="my-audio-app/image/2.png" alt="MyAudioApp示意图2" width="300" />
+  <img src="my-audio-app/image/3.png" alt="MyAudioApp示意图3" width="300" />
+  <img src="my-audio-app/image/4.png" alt="MyAudioApp示意图4" width="300" />
+  <img src="my-audio-app/image/5.png" alt="MyAudioApp示意图5" width="300" />
+  <img src="my-audio-app/image/6.png" alt="MyAudioApp示意图6" width="300" />
+</div>
