@@ -85,10 +85,10 @@ Next.js 全栈练习项目，实现服务器端渲染（SSR）和前后端数据
 
 示意图：  
 <div style="display: flex; gap: 10px;">
-  <img src="my-audio-app/image/1.png" alt="MyAudioApp示意图1" width="300" />
-  <img src="my-audio-app/image/2.png" alt="MyAudioApp示意图2" width="300" />
-  <img src="my-audio-app/image/3.png" alt="MyAudioApp示意图3" width="300" />
-  <img src="my-audio-app/image/4.png" alt="MyAudioApp示意图4" width="300" />
-  <img src="my-audio-app/image/5.png" alt="MyAudioApp示意图5" width="300" />
-  <img src="my-audio-app/image/6.png" alt="MyAudioApp示意图6" width="300" />
+  <img src="my-audio-app/imag/1.png" alt="MyAudioApp示意图1" width="300" />
+  <img src="my-audio-app/imag/2.png" alt="MyAudioApp示意图2" width="300" />
+  <img src="my-audio-app/imag/3.png" alt="MyAudioApp示意图3" width="300" />
+  <img src="my-audio-app/imag/4.png" alt="MyAudioApp示意图4" width="300" />
+  <img src="my-audio-app/imag/5.png" alt="MyAudioApp示意图5" width="300" />
+  <img src="my-audio-app/imag/6.png" alt="MyAudioApp示意图6" width="300" />
 </div>
