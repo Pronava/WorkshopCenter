@@ -34,7 +34,7 @@
 
 ## 🧠 NextJs_Workshop
 
-- **技术栈**：JavaScript, Next.js, React, Node.js, MySQL  
+- **技术栈**：JavaScript, Next.js, React, Node.js, MySQL, Express
 
 **示意图：**  
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;">
