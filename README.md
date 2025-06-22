@@ -60,6 +60,15 @@
 - **技术栈**：Python, Flask, MySQL  
 - **简介**：基于 Flask 搭建的轻量级服务，探索大语言模型（LLM）调用接口的实践。
 
+**示意图：**  
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;">
+  <img src="llm_codep/image/1.png" alt="llm_code示意图1" width="300" />
+  <img src="llm_codep/image/2.png" alt="llm_code示意图2" width="300" />
+  <img src="llm_codep/image/3.png" alt="llm_code示意图3" width="300" />
+  <img src="llm_codep/image/4.png" alt="llm_code示意图4" width="300" />
+  <img src="llm_codep/image/5.png" alt="llm_code示意图5" width="300" />
+  <img src="llm_codep/image/6.png" alt="llm_code示意图6" width="300" />
+</div>
 ---
 
 ## 📱 MobileComputing
