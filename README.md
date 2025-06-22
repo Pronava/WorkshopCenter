@@ -7,7 +7,6 @@
 ## 🧠 NextJs_Workshop
 
 - **技术栈**：JavaScript, Next.js, React, Node.js, MySQL  
-- **简介**：基于 Next.js 的多页面前端练习项目，结合 React 构建组件化 UI，后端数据交互基于 Node.js 与 MySQL。
 
 **示意图：**  
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;">
@@ -22,7 +21,6 @@
 ## 💎 饰品交易平台
 
 - **技术栈**：HTML, CSS, JavaScript, jQuery, Ajax, MySQL  
-- **简介**：一个商品饰品类交易平台原型，支持商品浏览、下单功能及后台管理页面。
 
 **示意图：**  
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;">
@@ -36,7 +34,6 @@
 ## 🎧 MyAudioApp
 
 - **技术栈**：JavaScript, Web Audio API, Vue.js, FastAPI  
-- **简介**：一个音频可视化与比对系统，支持录音上传、音高检测与实时反馈。
 
 - **核心功能：**
   - 音频切片上传与播放  
@@ -58,7 +55,6 @@
 ## 🔍 llm_code
 
 - **技术栈**：Python, Flask, MySQL  
-- **简介**：基于 Flask 搭建的轻量级服务，探索大语言模型（LLM）调用接口的实践。
 
 **示意图：**  
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;">
