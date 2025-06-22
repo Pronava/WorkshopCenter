@@ -2,19 +2,6 @@
 
 > **说明：不定期更新**
 
-## JavaBackEndPractice
-技术栈：Java, Spring Boot, MySQL  
-一个后端练习项目，使用 Spring Boot 实现 RESTful API，数据库操作和安全配置，适合学习后端开发。
-
-> 示例功能：
-- 用户管理接口
-- 权限验证
-- 数据库持久化
-
-![JavaBackEndPractice示意图]()
-
----
-
 ## llm_code
 技术栈：Python, Flask  
 一个轻量级的 Web 应用，使用 Flask 实现简单的后端路由和前端页面渲染，适合快速开发和学习 Flask。
