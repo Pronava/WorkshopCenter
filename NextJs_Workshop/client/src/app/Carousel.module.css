@@ -1,0 +1,68 @@
+.carouselContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.imageContainer {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.imageItem {
+  min-width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot:hover {
+  background-color: #999;
+}
+
+.activeDot {
+  background-color: #333;
+}

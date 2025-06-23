@@ -1,0 +1,80 @@
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin: 24px 0;
+  font-weight: bold;
+}
+
+/* 主容器 */
+.masonry {
+  column-count: 1;
+  column-gap: 16px;
+  padding: 0 16px;
+}
+
+@media (min-width: 600px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+@media (min-width: 900px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* 单个图像容器，添加动画 */
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f0f0f0;
+
+  /* 动画部分 */
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* 图片 */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* 骨架屏动画 */
+.skeletonShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    #e0e0e0 8%,
+    #f8f8f8 18%,
+    #e0e0e0 33%
+  );
+  animation: shimmer 1.6s infinite linear;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+/* 骨架加载动画 */
+@keyframes shimmer {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+/* 渐入下滑动画 */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

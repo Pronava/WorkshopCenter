@@ -1,0 +1,56 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 让内容区往下避开导航栏 */
+.contentWrapper {
+  padding-top: 0px;
+  display: flex;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #2563eb; /* 蓝色 */
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1e40af; /* 深蓝 */
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.responseText {
+  color: #374151; /* 灰色 */
+  margin-top: 0.5rem;
+}
+
+.lightBackground {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.nightBackground {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+

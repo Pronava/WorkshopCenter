@@ -1,0 +1,187 @@
+.container {
+  width: 110px;
+  height: 45px;
+  border-radius: 25px;
+  user-select: none;
+  cursor: pointer;
+  padding: 0px;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  /* 关键，防止溢出 */
+}
+
+/* 白天背景 - Neumorphism 浮雕 */
+.day {
+  background: #e0e0e0;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.15),
+    -6px -6px 12px rgba(255, 255, 255, 0.9),
+    2px 2px 5px rgba(0, 0, 0, 0.1),
+    -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+/* 夜晚背景 - Neumorphism 内凹 */
+.night {
+  background: #1e1e1e;
+  box-shadow:
+    inset 6px 6px 10px rgba(0, 0, 0, 0.7),
+    inset -6px -6px 10px rgba(70, 70, 70, 0.7),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.9),
+    inset -2px -2px 5px rgba(80, 80, 80, 0.8);
+}
+
+
+/* 滑轨 */
+.track {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border-radius: 25px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* 左右两侧区域 */
+.leftSide,
+.rightSide {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  overflow: visible; /* 允许子元素溢出显示 */
+}
+
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 星星容器 */
+.stars {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: visible;
+}
+
+/* 单颗星星 */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: twinkle 2.5s infinite ease-in-out alternate;
+  box-shadow: 0 0 4px 1px white;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+    filter: brightness(1.8);
+  }
+}
+
+/* 云朵 */
+.cloud {
+  position: relative;
+  width: 40px;
+  height: 25px;
+  margin-left: -18px;
+}
+
+.cloudCircle1,
+.cloudCircle2,
+.cloudCircle3 {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.7);
+}
+
+.cloudCircle1 {
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: 10px;
+}
+
+.cloudCircle2 {
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 20px;
+}
+
+.cloudCircle3 {
+  width: 18px;
+  height: 18px;
+  top: 7px;
+  left: 30px;
+}
+
+/* 滑块按钮 */
+.slider {
+  position: absolute;
+  top: 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: left 0.4s ease, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* 白天按钮样式 */
+.daySlider {
+  color: #f39c12;
+  background-color: #fffbea;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.9);
+}
+
+/* 晚上按钮样式 */
+.nightSlider {
+  color: #f0f8ff;
+  background-color: #1a1a2e;
+  box-shadow: 0 0 10px rgba(240, 248, 255, 0.9);
+}
+
+/* 图标大小 */
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

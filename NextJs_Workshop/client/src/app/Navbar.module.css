@@ -1,0 +1,91 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #0070f3;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1200;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: auto;
+}
+
+.navItems {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding-right: 30px;
+}
+
+.navItems li {
+  position: relative;
+  margin: 0 8px;
+}
+
+.navItems a,
+.dropbtn {
+  color: white;
+  padding: 14px 12px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+}
+
+/* hover 效果稍微加深背景，便于交互 */
+.navItems a:hover,
+.dropbtn:hover {
+  background-color: #005bb5;
+  color: #ffd700;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  min-width: 140px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdownContent li a {
+  color: #333;
+  padding: 12px 16px;
+  display: block;
+  text-align: left;
+}
+
+.dropdownContent li a:hover {
+  background-color: #ddd;
+}
+
+/* 去掉粗体和黄色，改用底部蓝色条 + 字体颜色加深 */
+.active > a,
+.active > button {
+  color: #ffd700; /* 金色，更温暖且显眼 */
+  border-bottom: 3px solid #ffd700; /* 更粗的底边 */
+  font-weight: 600;
+}
+
+/* 下拉菜单当前选中项改成蓝底白字，更统一 */
+.activeDropdown > a {
+  background-color: #0070f3;
+  color: white;
+  font-weight: 600;
+}
+
+.dropdown.open > button {
+  background-color: #005bb5;
+}
