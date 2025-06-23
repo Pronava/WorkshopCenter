@@ -93,7 +93,7 @@ export default function Home() {
 
         {/* ===== 轮播图：无缝 + 自动 + 悬停暂停 + 圆点指示器 ===== */}
         <section id="carousel">
-          <h1 className={homeStyles.title}>轮播图示例</h1>
+          <h1 className={homeStyles.title}>轮播图：无缝 + 自动 + 悬停暂停 + 圆点指示器</h1>
           <div
             className={carouselStyles.carouselContainer}
             onMouseEnter={() => setIsHovered(true)}
