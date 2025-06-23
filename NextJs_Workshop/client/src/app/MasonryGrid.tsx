@@ -5,12 +5,18 @@ import Image from "next/image";
 import styles from "./MasonryGrid.module.css";
 
 const imageList = [
+  "/zelda1.jpg",
+  "/zelda.jpg",
+  "/zelda2.jpg",
   "/zelda.jpg",
   "/zelda.jpg",
+  "/zelda2.jpg",
+  "/zelda2.jpg",
+  "/zelda.jpg",
+  "/zelda1.jpg",
   "/zelda.jpg",
   "/zelda.jpg",
-  "/zelda.jpg",
-  "/zelda.jpg",
+  "/zelda2.jpg",
 ];
 
 function LazyMasonryImage({
